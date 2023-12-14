@@ -20,6 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('libs/sbadmin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    {{-- Ayuda a mostrar estilos solo en una vista --}}
+    @stack('styles')
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -53,7 +57,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee XD</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::User()
+                                ->name}}</span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -124,6 +129,16 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('libs/chart.js/Chart.min.js') }}"></script>
+
+    {{-- SWEETALERT --}}
+
+    <!-- Agrega esto a tu archivo de diseño principal o enlaza SweetAlert directamente -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @stack('scripts')
+    <script src="{{ asset('/js/main.js') }}"></script>
+
+
 
 </body>
 
