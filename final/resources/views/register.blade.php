@@ -11,6 +11,7 @@
 
 <body>
     <main class="container align-center p-5">
+        <h1>INGRESAR AL SISTEMA</h1>
         <form method="POST" action="{{ route('validar-registro') }}">
             @csrf
             <div class="mb-3">
