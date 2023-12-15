@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('titulo', 'Panel Administrativo')
+@section('titulo', 'Opciones')
 
 @section('contenido')
 
@@ -15,7 +15,7 @@
                                 Productos</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <a class="stretched-link text-success" href="{{route('products.index')}}">
-                                Ir a productos
+                                Continuar
                                 </a>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 Categorias</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <a class="stretched-link text-success" href="{{route('categories.index')}}">
-                                Ir a las categorias
+                                    Continuar
                                 </a>
                             </div>
                         </div>
