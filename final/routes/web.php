@@ -17,14 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('/',function () {
+    return view('register');
 });
 
 // Rutas para el login
-Route::view('/login',"login")->name('login');
 Route::view('/registro',"register")->name('registro');
+Route::view('/login',"login")->name('login');
 Route::view('/privada',"secret")->name('privada');
+
+
 
 // Rutas para validar el registro
 Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
