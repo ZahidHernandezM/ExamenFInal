@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -35,3 +36,4 @@ Route::get('/admin',[HomeController::class,'index'])->name('home');
 
 Route::resource('/products',ProductController::class);
 
+Route::resource('/categories',CategoryController::class);

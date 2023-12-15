@@ -2,55 +2,50 @@
 
 @section('titulo')
     <span>
-        Productos
+        Categorias
     </span>
-    <a class="btn btn-primary btn-circle"  href="{{ route('products.create') }}">
+    <a class="btn btn-primary btn-circle"
+    href="{{ route('categories.create') }}"
+    >
         <i class="fas fa-plus"></i>
     </a>
 @endsection
 @section('contenido')
     <div class="card">
         <div class="card-body">
-            {{-- Tabla de productos --}}
-            <table id="dt-products" class="table table-striped table-bordered">
+            {{-- Tabla de categorias --}}
+            <table id="dt-categories" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th class="text-center">Nombre</th>
-                        <th class="text-center">Descripcion</th>
-                        <th class="text-center">Precio Unitario</th>
-                        <th class="text-center">Cantidad</th>
-                        <th class="text-center">Costo total</th>
-                        <th class="text-center">Categorias</th>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Nombre de la categoria</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($products as $product)
+                    @forelse ($categories as $category)
                         <tr class="text-center">
-                            <td>{{ $product->nombre }}</td>
-                            <td>{{ $product->descripcion }}</td>
-                            <td>$ {{ $product->precio_unitario }}</td>
-                            <td>{{ $product->cantidad }}</td>
-                            <td>$ {{ $product->costo_total }}</td>
-                            <td class="col-2">
-                                @foreach ($product->categories as $category)
-                                    {{ $category->name }}
-                                    @if (!$loop->last)
-                                        , <!-- Agregar una coma entre las categorías, excepto la última -->
-                                    @endif
-                                @endforeach
-                            </td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }}</td>
                             <td>
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">
+                                <a
+                                href="{{ route('categories.show', $category->id) }}"
+                                class="btn btn-info btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">
+                                <a
+                                href="{{ route('categories.edit', $category->id) }}"
+                                class="btn btn-warning btn-sm">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ $product->id }})">
+                                <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ $category->id }})">
                                     <i class="fas fa-trash"></i>
                                 </button>
-                                <form id="delete-form-{{ $product->id }}" method="POST" action="{{ route('products.destroy', ['product' => $product->id]) }}" style="display: none;">
+                                <form
+                                id="delete-form-{{ $category->id }}"
+                                method="POST"
+                                action="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                                style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -64,9 +59,9 @@
                 </tbody>
             </table>
             <div class="pagination ">
-                {{ $products->links() }}
+                {{-- {{ $categories->links() }} --}}
             </div>
-            {{-- Fin de la tabla de productos --}}
+            {{-- Fin de la tabla de categoryos --}}
         </div>
     </div>
 
@@ -82,7 +77,7 @@
 
 <script>
     // Función para mostrar una alerta de confirmación antes de eliminar
-    function confirmDelete(productId) {
+    function confirmDelete(categoryId) {
         Swal.fire({
             title: '¿Estás seguro?',
             text: 'Esta acción no se puede deshacer.',
@@ -95,7 +90,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Envía el formulario para eliminar
-                document.getElementById(`delete-form-${productId}`).submit();
+                document.getElementById(`delete-form-${categoryId}`).submit();
             }
         });
     }

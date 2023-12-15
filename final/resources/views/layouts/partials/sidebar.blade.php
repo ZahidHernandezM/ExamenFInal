@@ -36,8 +36,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Usuarios</a>
-                <a class="collapse-item" href="cards.html">Productos</a>
+                <a class="collapse-item" href="{{route('products.index')}}"><i class="fas fa-boxes"></i> Productos</a>
+                <a class="collapse-item" href="{{route('categories.index')}}"><i class="fa fa-list-alt" aria-hidden="true"></i>                    Categorias</a>
             </div>
         </div>
     </li>
@@ -45,7 +45,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
+{{--
     <!-- Heading -->
     <div class="sidebar-heading">
         Ventas
@@ -57,7 +57,7 @@
         <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-boxes"></i>
             <span>Productos</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
